@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - reg</title>
+</head>
+<body>
+    <!--================ REGISTER============-->
+
+
+        <h3>Register</h3>
+
+        {% for message in get_flashed_messages(category_filter=["reg"]) %}
+            <p style="color: red;">{{message}}</p>
+        {% endfor %}
+
+
+    <form action="/users/register", method="post">
+        <div>
+            First name:
+            <input name="first_name">
+            {% for message in get_flashed_messages(category_filter=["first_name"]) %}
+            <p style="color: red;">{{message}}</p>
+        {% endfor %}
+        </div>
+        <div>
+            Last name:
+            <input name="last_name">
+            {% for message in get_flashed_messages(category_filter=["last_name"]) %}
+            <p style="color: red;">{{message}}</p>
+        {% endfor %}
+        </div>
+        <div>
+            Email:
+            <input name="email">
+            {% for message in get_flashed_messages(category_filter=["email"]) %}
+            <p style="color: red;">{{message}}</p>
+        {% endfor %}
+        </div>
+        <div>
+            password:
+            <input name="password" type="password">
+            {% for message in get_flashed_messages(category_filter=["password"]) %}
+            <p style="color: red;">{{message}}</p>
+        {% endfor %}
+        </div>
+        <div>
+            confirm_password:
+            <input name="confirm_password">
+        </div>
+        <p></p>
+        <button>register</button>
+    </form>
+    <hr>
+    <h3>Login</h3>
+    {% for message in get_flashed_messages(category_filter=["log"]) %}
+            <p style="color: red;">{{message}}</p>
+        {% endfor %}
+    <form action="/users/login", method="post">
+    <div>
+        email:
+        <input name="email">
+    </div>
+    <div>
+        password:
+        <input name="password">
+    </div>
+    <button>login</button>
+</form>
+</body>
+</html>
